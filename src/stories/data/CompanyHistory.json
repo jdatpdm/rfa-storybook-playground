@@ -1,0 +1,18 @@
+[
+    {
+        "category": "RFA Rating",
+        "start": "2019-01-10",
+        "end": "2019-01-13",
+        "color": "#000000",
+        "task:": "Gathering requirements",
+        "icon": "./img/ratings/redflag1.png"
+      },
+      {
+        "category": "RFA Rating",
+        "start": "2019-02-05",
+        "end": "2019-04-18",
+        "color": "#000000",
+        "task": "Development",
+        "icon": "./img/ratings/redflag1.png"
+      }
+]
