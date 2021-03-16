@@ -3,6 +3,10 @@
     <div class="px-3 py-1 text-white bg-red-600 border rounded-t">
       Company Timeline
     </div>
+    <!-- <img
+      :src="images[0]"
+      alt=""
+    > -->
     <div
       style="height:500px"
       ref="chartdiv"
@@ -21,7 +25,10 @@ import data from "./data/CompanyHistory.json";
 export default {
   name: "Serpantine",
 
+  props: ["images"],
+
   mounted() {
+    console.log(this.images);
     let chart = am4core.create(
       this.$refs.chartdiv,
       am4plugins_timeline.SerpentineChart
@@ -43,7 +50,8 @@ export default {
         color: colorSet.getIndex(0),
         task: "1 Red Flag",
         disabled3: false,
-        image3: "./img/ratings/redflag1.png",
+        image3:
+          "https://rfa2-dev-static.s3.amazonaws.com/images/ratings/bronze.png",
       },
       {
         category: "RFA Rating",
