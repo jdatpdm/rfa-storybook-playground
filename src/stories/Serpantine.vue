@@ -39,54 +39,35 @@ export default {
     chart.yAxisInnerRadius = am4core.percent(-25);
     chart.maskBullets = false;
 
-    let colorSet = new am4core.ColorSet();
-    colorSet.saturation = 0.5;
-
     chart.data = [
-      {
-        category: "RFA Rating",
-        start: "2019-01-10",
-        end: "2019-01-13",
-        color: colorSet.getIndex(0),
-        task: "1 Red Flag",
-        disabled3: false,
-        image3:
-          "https://rfa2-dev-static.s3.amazonaws.com/images/ratings/bronze.png",
-      },
       {
         category: "RFA Rating",
         start: "2019-01-15",
         end: "2019-02-12",
-        color: "#EC670A",
+        color: "rgba(236,103,10,0.5)".replace(/[^,]+(?=\))/, "0.5"),
         task: "Amber Rating",
         disabled1: false,
-        image1: "./img/ratings/amber.png",
+        image1:
+          "https://rfa2-dev-static.s3.amazonaws.com/images/ratings/amber.png",
       },
       {
         category: "RFA Rating",
-        start: "2019-02-25",
+        start: "2019-02-12",
         end: "2019-03-10",
-        color: "#6E767C",
+        color: "rgba(110,118,124,0.5)".replace(/[^,]+(?=\))/, "0.5"),
         task: "Silver",
         disabled4: false,
-        image4: "./img/ratings/silver.png",
+        image4:
+          "https://rfa2-dev-static.s3.amazonaws.com/images/ratings/silver.png",
       },
       {
         category: "RFA Rating",
-        start: "2019-04-20",
+        start: "2019-03-10",
         end: "2019-04-30",
-        color: "#efefef",
-        task: "Testing and QA",
+        color: "rgba(238,46,36,0.5)".replace(/[^,]+(?=\))/, "0.5"),
+        task: "1 Red Flag",
         disabled2: false,
         image2: "./img/ratings/redflag1.png",
-        location: 0,
-      },
-      {
-        category: "RFA Rating",
-        start: "2019-03-23",
-        end: "2019-04-29",
-        color: colorSet.getIndex(15),
-        task: "Testing and QA",
       },
     ];
 
@@ -103,7 +84,7 @@ export default {
     categoryAxis.renderer.radius = 60;
 
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-    dateAxis.renderer.minGridDistance = 70;
+    dateAxis.renderer.minGridDistance = 50;
     dateAxis.baseInterval = { count: 1, timeUnit: "day" };
     dateAxis.renderer.tooltipLocation = 0;
     dateAxis.startLocation = -0.5;
@@ -126,7 +107,7 @@ export default {
     labelTemplate.padding(7, 7, 7, 7);
 
     let series = chart.series.push(new am4plugins_timeline.CurveColumnSeries());
-    series.columns.template.height = am4core.percent(20);
+    series.columns.template.height = am4core.percent(10);
     series.columns.template.tooltipText =
       "{task}: [bold]{openDateX}[/] - [bold]{dateX}[/]";
 
@@ -162,7 +143,7 @@ export default {
     let imageBullet2 = series.bullets.push(new am4plugins_bullets.PinBullet());
     imageBullet2.disabled = true;
     imageBullet2.propertyFields.disabled = "disabled2";
-    imageBullet2.locationX = 0;
+    imageBullet2.locationX = 1;
     imageBullet2.circle.radius = 20;
     imageBullet2.propertyFields.stroke = "color";
     imageBullet2.background.propertyFields.fill = "color";
@@ -194,6 +175,9 @@ export default {
     );
     eventSeries.dataFields.dateX = "eventDate";
     eventSeries.dataFields.categoryY = "category";
+    eventSeries.tooltip.label.fill = new am4core.InterfaceColorSet().getFor(
+      "alternativeBackground"
+    );
     eventSeries.data = [
       {
         category: "Creditor Service",
@@ -227,13 +211,67 @@ export default {
       },
       {
         category: "Creditor Service",
+        eventDate: "2019-03-07",
+        letter: "10% Drop in Profit",
+        description: "Profit Drop",
+      },
+      {
+        category: "Creditor Service",
+        eventDate: "2019-03-09",
+        letter: "New CCJ",
+        description: "Satisfied",
+      },
+      {
+        category: "Creditor Service",
+        eventDate: "2019-03-10",
+        letter: "New CCJ",
+        description: "Satisfied",
+      },
+      {
+        category: "Creditor Service",
         eventDate: "2019-03-12",
         letter: "New CCJ",
         description: "Satisfied",
       },
       {
         category: "Creditor Service",
+        eventDate: "2019-03-12",
+        letter: "New CCJ",
+        description: "Satisfied",
+      },
+      {
+        category: "Creditor Service",
+        eventDate: "2019-03-28",
+        letter: "Profit Alert",
+        description: "Unsatisfied",
+      },
+      {
+        category: "Creditor Service",
+        eventDate: "2019-03-30",
+        letter: "Adverse Media",
+        description: "Unsatisfied",
+      },
+      {
+        category: "Creditor Service",
+        eventDate: "2019-04-30",
+        letter: "New CCJ",
+        description: "Unsatisfied",
+      },
+      {
+        category: "Creditor Service",
         eventDate: "2019-03-22",
+        letter: "Director Change",
+        description: "Unsatisfied",
+      },
+      {
+        category: "Creditor Service",
+        eventDate: "2019-03-19",
+        letter: "Late Filing Returns",
+        description: "Unsatisfied",
+      },
+      {
+        category: "Creditor Service",
+        eventDate: "2019-04-23",
         letter: "New CCJ",
         description: "Unsatisfied",
       },
