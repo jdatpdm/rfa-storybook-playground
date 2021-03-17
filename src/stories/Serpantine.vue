@@ -67,7 +67,8 @@ export default {
         color: "rgba(238,46,36,0.5)".replace(/[^,]+(?=\))/, "0.5"),
         task: "1 Red Flag",
         disabled2: false,
-        image2: "./img/ratings/redflag1.png",
+        image2:
+          "https://rfa2-dev-static.s3.amazonaws.com/images/ratings/redflag1.png",
       },
     ];
 
